@@ -1,0 +1,39 @@
+---
+title: "Data visualization"
+author: "Akash Chauhan"
+date: "11/20/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r , echo=TRUE}
+install.packages("tidyverse")
+library(tidyverse)
+library(readr)
+mmsa_icu_beds <- read_csv("/cloud/project/mmsa-icu-beds.csv")
+head(mmsa_icu_beds)
+
+```
+
+
+```{r, include=TRUE}
+library(tidyverse)
+ggplot(data= mmsa_icu_beds) + geom_point(mapping = aes(x= high_risk_per_hospital , y= hospitals , color= total_at_risk))
+```
+
+
+
+
+```{r, echo=TRUE}
+# Compute a histogram of `Patients per ICU bed`
+ggplot( mmsa_icu_beds, aes(high_risk_per_ICU_bed)) +
+  geom_histogram(bins = 25)
+```
+```
+
+
+
